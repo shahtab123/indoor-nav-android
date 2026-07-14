@@ -2,9 +2,9 @@
 
 # Indoor Nav
 
-Open-source indoor navigation for apartments: mark rooms and doors, build a route graph, and navigate in AR.
+**Indoor Nav** is an open-source indoor navigation app for apartments: mark rooms and doors, build a route graph, and navigate in AR.
 
-Navigation is the product; localization is a replaceable plug-in. One app, two modes — Map and Navigate — built from Google’s ARCore `hello_ar_kotlin` sample.
+Navigation is the product; localization is a replaceable plug-in. One app, two modes — Map and Navigate. Uses Google’s ARCore `hello_ar_kotlin` sample as the rendering base.
 
 - **App module:** [`app/`](app/) (`com.google.ar.core.examples.kotlin.helloar`)
 - **Localization today:** Google Cloud Anchors (v1) — works, but limited (see below)
@@ -20,7 +20,7 @@ Cloud Anchors are fine for a prototype, not for reliable everyday navigation:
 - Hosted anchors expire (~24h with an API key), so markers do not last
 - Mapping feels fragile — lighting, featureless walls, and quotas all hurt quality
 
-That is why the next major localization phase is **ISP** (Indoor Spatial Platform): a self-hosted indoor map / VPS-style backend behind the same `LocalizationBackend` plug-in, so IndoorNav keeps the nav product and swaps out the weak cloud-anchor layer. Details: [docs/future-plan.md](docs/future-plan.md).
+That is why the next major localization phase is **ISP** (Indoor Spatial Platform): a self-hosted indoor map / VPS-style backend behind the same `LocalizationBackend` plug-in, so **Indoor Nav** keeps the nav product and swaps out the weak cloud-anchor layer. Details: [docs/future-plan.md](docs/future-plan.md).
 
 ---
 
@@ -59,7 +59,7 @@ All project docs live in [`docs/`](docs/README.md).
 
 | Doc | What it’s for |
 |-----|----------------|
-| [docs/plan.md](docs/plan.md) | IndoorNav product roadmap |
+| [docs/plan.md](docs/plan.md) | Indoor Nav product roadmap |
 | [docs/future-plan.md](docs/future-plan.md) | ISP / IndoorVPS track |
 | [docs/architecture.md](docs/architecture.md) | Localization plug-in |
 | [docs/cloud-anchors.md](docs/cloud-anchors.md) | API key & quotas |
