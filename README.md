@@ -7,8 +7,20 @@ Open-source indoor navigation for apartments: mark rooms and doors, build a rout
 Navigation is the product; localization is a replaceable plug-in. One app, two modes — Map and Navigate — built from Google’s ARCore `hello_ar_kotlin` sample.
 
 - **App module:** [`app/`](app/) (`com.google.ar.core.examples.kotlin.helloar`)
-- **Localization today:** Google Cloud Anchors (v1)
-- **Later:** Indoor Spatial Platform — [docs/future-plan.md](docs/future-plan.md)
+- **Localization today:** Google Cloud Anchors (v1) — works, but limited (see below)
+- **Next localization:** Indoor Spatial Platform (ISP) — [docs/future-plan.md](docs/future-plan.md)
+
+---
+
+## Limitations (why ISP)
+
+Cloud Anchors are fine for a prototype, not for reliable everyday navigation:
+
+- Pins can fail to resolve until you walk and rescan the room again
+- Hosted anchors expire (~24h with an API key), so markers do not last
+- Mapping feels fragile — lighting, featureless walls, and quotas all hurt quality
+
+That is why the next major localization phase is **ISP** (Indoor Spatial Platform): a self-hosted indoor map / VPS-style backend behind the same `LocalizationBackend` plug-in, so IndoorNav keeps the nav product and swaps out the weak cloud-anchor layer. Details: [docs/future-plan.md](docs/future-plan.md).
 
 ---
 
@@ -85,7 +97,7 @@ Details: [docs/architecture.md](docs/architecture.md) · phases: [docs/plan.md](
 **Phase 1 (core) — done:** AR Map/Navigate (no 2D floor plan yet), waypoints + save/load, A* + connections, Cloud Anchors, path cues.
 
 **Next:** Phase 2 — navigation platform. See [docs/plan.md](docs/plan.md).  
-**ISP (localization platform):** [docs/future-plan.md](docs/future-plan.md).  
+**ISP:** better localization so users stop depending on constant rescans — [docs/future-plan.md](docs/future-plan.md).  
 **Not building in this repo:** CAD editor, OpenVPS/RTAB/ORB-SLAM.
 
 ---
