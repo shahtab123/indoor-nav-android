@@ -1,19 +1,14 @@
+![Indoor Nav](banner.png)
+
 # Indoor Nav
 
-Open-source **indoor navigation platform** for apartments: mark rooms/doors (and later **import** layouts), build a navigation graph, and navigate in **AR** (and later 2D).
+Open-source indoor navigation for apartments: mark rooms and doors, build a route graph, and navigate in AR.
 
-**Author:** Shahtab  
-**License:** [Apache License 2.0](LICENSE)
+Navigation is the product; localization is a replaceable plug-in. One app, two modes — Map and Navigate — built from Google’s ARCore `hello_ar_kotlin` sample.
 
-**Product principle:** navigation is the product; localization is a replaceable plug-in.
-
-One app, two modes — not two apps. Built from Google’s ARCore `hello_ar_kotlin` sample.
-
-**App module:** [`app/`](app/)  
-**Package:** `com.google.ar.core.examples.kotlin.helloar`
-
-**Localization today:** Google Cloud Anchors (v1).  
-**Localization later:** Indoor Spatial Platform — see [docs/future-plan.md](docs/future-plan.md).
+- **App module:** [`app/`](app/) (`com.google.ar.core.examples.kotlin.helloar`)
+- **Localization today:** Google Cloud Anchors (v1)
+- **Later:** Indoor Spatial Platform — [docs/future-plan.md](docs/future-plan.md)
 
 ---
 
