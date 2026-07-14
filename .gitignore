@@ -1,0 +1,44 @@
+# ── Secrets / API keys (never commit) ───────────────────────────────────────
+# ARCORE_API_KEY and sdk.dir live here
+**/local.properties
+local.properties
+
+# Google OAuth / service-account downloads
+client_secret*.json
+*-credentials.json
+**/credentials.json
+**/service-account*.json
+
+# Generic secret / env files
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+secrets/
+**/secrets.*
+
+# ── Android / Gradle build output (manifests bake in ARCORE_API_KEY) ────────
+.gradle/
+**/build/
+**/.cxx/
+captures/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# ── IDE / OS ────────────────────────────────────────────────────────────────
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# ── Local extras ────────────────────────────────────────────────────────────
+*.log
+*.keystore
+*.jks
+!debug.keystore
+
+# Upstream ARCore SDK clone (reference only; not needed to build `app/`)
+arcore-android-sdk/

@@ -1,0 +1,16 @@
+Indoor Nav
+Copyright 2026 Shahtab
+
+This product includes software developed by Shahtab.
+Licensed under the Apache License, Version 2.0.
+
+---------------------------------------------------------------------------
+
+This product includes portions derived from Google ARCore SDK samples
+(hello_ar_kotlin and shared Java helpers).
+
+Copyright Google LLC
+Licensed under the Apache License, Version 2.0.
+See arcore-android-sdk/LICENSE for the upstream ARCore SDK license terms.
+
+ARCore, Android, and related marks are trademarks of Google LLC.

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026 Shahtab — Apache License 2.0 -->
+<resources>
+  <string translatable="false" name="app_name">Indoor Nav</string>
+  <string translatable="false" name="app_author">Shahtab</string>
+  <string translatable="false" name="searching_surfaces">Move your phone slowly to detect surfaces…</string>
+</resources>

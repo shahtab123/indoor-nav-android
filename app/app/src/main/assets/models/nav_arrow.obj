@@ -1,0 +1,51 @@
+# Upright path arrow for AR navigation (Esri / Live View style).
+# Tip points +Z; sits with world-up +Y. Pitch slightly toward camera when drawing
+# so the top face is readable (not edge-on).
+#
+# Tip
+v   0.00  0.00  0.22
+v   0.00  0.06  0.22
+# Wing back (wide)
+v  -0.14  0.00  0.00
+v  -0.14  0.06  0.00
+v   0.14  0.00  0.00
+v   0.14  0.06  0.00
+# Shaft
+v  -0.045 0.00  0.00
+v  -0.045 0.06  0.00
+v   0.045 0.00  0.00
+v   0.045 0.06  0.00
+v  -0.045 0.00 -0.16
+v  -0.045 0.06 -0.16
+v   0.045 0.00 -0.16
+v   0.045 0.06 -0.16
+
+# Tip top / bottom
+f 2 4 6
+f 1 5 3
+# Tip sides
+f 1 2 6
+f 1 6 5
+f 1 3 4
+f 1 4 2
+f 5 6 4
+f 5 4 3
+# Shaft top / bottom
+f 8 12 14
+f 8 14 10
+f 7 9 13
+f 7 13 11
+# Shaft sides
+f 7 8 10
+f 7 10 9
+f 11 13 14
+f 11 14 12
+f 7 11 12
+f 7 12 8
+f 9 10 14
+f 9 14 13
+# Wing fill to shaft
+f 3 7 8
+f 3 8 4
+f 5 6 10
+f 5 10 9

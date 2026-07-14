@@ -1,0 +1,17 @@
+# Android Studio configuration.
+*.iml
+.idea/
+
+# Gradle configuration.
+.gradle/
+build/
+
+# User configuration (sdk.dir + ARCORE_API_KEY — never commit).
+local.properties
+**/local.properties
+
+# OS configurations.
+.DS_Store
+
+# Android NDK cmake output.
+.cxx/
