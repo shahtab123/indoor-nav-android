@@ -92,21 +92,21 @@ Future / parallel track to [IndoorNav](plan.md).
 
 # Final Technology Stack
 
-| Layer                  | Selected            |
-| ---------------------- | ------------------- |
-| Android Tracking       | ARCore              |
-| Camera                 | CameraX             |
-| Reconstruction         | COLMAP / pycolmap   |
-| Localization Framework | HLoc                |
-| Image Retrieval        | EigenPlaces         |
-| Feature Extraction     | SuperPoint          |
-| Feature Matching       | LightGlue           |
-| Pose Estimation        | PoseLib + OpenCV    |
-| Image Processing       | OpenCV              |
-| API                    | FastAPI             |
-| Metadata Database      | PostgreSQL          |
-| Feature Database       | FAISS               |
-| Deployment             | Native Installation |
+| Layer                  | Selected                  |
+| ---------------------- | ------------------------- |
+| Android Tracking       | **ARCore**                |
+| Camera                 | **CameraX**               |
+| Reconstruction         | **COLMAP 4.x / pycolmap** |
+| Localization Framework | **HLoc**                  |
+| Image Retrieval        | **EigenPlaces**           |
+| Feature Extraction     | **SuperPoint**            |
+| Feature Matching       | **LightGlue**             |
+| Pose Estimation        | **PoseLib + OpenCV 5**    |
+| Image Processing       | **OpenCV 5**              |
+| API                    | **FastAPI**               |
+| Metadata Database      | **PostgreSQL**            |
+| Feature Database       | **FAISS**                 |
+| Deployment             | **Native Installation**   |
 
 ---
 

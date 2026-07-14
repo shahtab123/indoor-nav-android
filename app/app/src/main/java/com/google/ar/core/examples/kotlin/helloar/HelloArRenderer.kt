@@ -50,11 +50,15 @@ class HelloArRenderer(val activity: HelloArActivity) :
     private const val TAG = "HelloArRenderer"
     private const val Z_NEAR = 0.1f
     private const val Z_FAR = 100f
-    private const val MARKER_SCALE = 2.5f
-    /** Mesh radius ~0.08m; keep dots small so they don’t dominate the view. */
-    private const val PATH_SPHERE_SCALE = 0.85f
-    /** Spaced breadcrumbs (meters ahead of phone toward next pin). */
-    private val GUIDE_DISTANCES_M = floatArrayOf(0.85f, 1.9f, 3.0f)
+    private const val MARKER_SCALE = 1.85f
+    /** Mesh radius ~0.08m; mini crumbs so many can fit without clutter. */
+    private const val PATH_SPHERE_SCALE = 0.32f
+    /** First breadcrumb ahead of the phone (meters). */
+    private const val GUIDE_START_M = 0.35f
+    /** Spacing between mini spheres (meters). */
+    private const val GUIDE_STEP_M = 0.32f
+    /** Cap how far ahead breadcrumbs are drawn. */
+    private const val GUIDE_MAX_AHEAD_M = 5.5f
     private const val GUIDE_HEIGHT_OFFSET_M = 0.35f
   }
 
@@ -320,16 +324,17 @@ class HelloArRenderer(val activity: HelloArActivity) :
       val nx = dx / len
       val nz = dz / len
       val y = cameraPose.ty() - GUIDE_HEIGHT_OFFSET_M
-      val maxDist = min(len - 0.3f, GUIDE_DISTANCES_M.last())
+      val maxDist = min(len - 0.25f, GUIDE_MAX_AHEAD_M)
       val color = floatArrayOf(0.1f, 0.95f, 1.0f, 1f)
       val screenDots = ArrayList<Pair<Float, Float>>()
 
-      for (dist in GUIDE_DISTANCES_M) {
-        if (dist > maxDist) break
+      var dist = GUIDE_START_M
+      while (dist <= maxDist) {
         val pose =
           Pose.makeTranslation(cameraPose.tx() + nx * dist, y, cameraPose.tz() + nz * dist)
         drawGuideSphere(render, pose, color)
         activity.projectToScreen(pose, camera, labelHeightMeters = 0f)?.let { screenDots.add(it) }
+        dist += GUIDE_STEP_M
       }
       activity.updateGuideScreenDots(screenDots)
     } catch (e: Exception) {
