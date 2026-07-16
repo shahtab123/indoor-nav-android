@@ -2,9 +2,11 @@
 
 # Indoor Nav
 
-**Indoor Nav** is an open-source indoor navigation app for apartments: mark rooms and doors, build a route graph, and navigate in AR.
+> **Experimental starter kit — not a finished or production-ready product.**
 
-Navigation is the product; localization is a replaceable plug-in. One app, two modes — Map and Navigate. Uses Google’s ARCore `hello_ar_kotlin` sample as the rendering base.
+**Indoor Nav** is an open-source Android starter kit for building location-aware indoor AR experiences. The current prototype lets developers mark rooms and doors, connect them into a route graph, and test AR navigation.
+
+It provides reusable foundations—AR tracking, spatial markers, route graphs, pathfinding, and localization—not just a single mapping app. One app currently has two modes, Map and Navigate. It uses Google’s ARCore `hello_ar_kotlin` sample as the rendering base.
 
 - **App module:** [`app/`](app/) (`com.google.ar.core.examples.kotlin.helloar`)
 - **Localization today:** Google Cloud Anchors (v1) — works, but limited (see below)
@@ -12,9 +14,24 @@ Navigation is the product; localization is a replaceable plug-in. One app, two m
 
 ---
 
+## What you could build
+
+The starter kit can be extended into experiences such as:
+
+- **Indoor navigation:** Guide visitors through apartments, offices, campuses, museums, hospitals, or event venues.
+- **Icebreaker scavenger hunt:** Hide virtual objects in different rooms. Players race to find them all, and the lowest completion time wins.
+- **Treasure hunts and escape rooms:** Place clues, checkpoints, and puzzles at physical indoor locations.
+- **Museum or property tours:** Reveal AR information when visitors reach an exhibit, room, or point of interest.
+- **Training and onboarding:** Guide new employees through a workplace and attach instructions to equipment or locations.
+- **Accessibility assistance:** Provide visual or audio guidance between important indoor destinations.
+
+These are extension ideas, not features included in the current prototype.
+
+---
+
 ## Limitations (why ISP)
 
-Cloud Anchors are fine for a prototype, not for reliable everyday navigation:
+This starter kit is experimental. Cloud Anchors are useful for prototyping, but not reliable enough for a finished everyday product:
 
 - Pins can fail to resolve until you walk and rescan the room again
 - Hosted anchors expire (~24h with an API key), so markers do not last
@@ -29,9 +46,10 @@ That is why the next major localization phase is **ISP** (Indoor Spatial Platfor
 1. Phone + USB debugging → [docs/setup.md](docs/setup.md)
 
 2. **API key** (required for saving markers to the cloud):
-   1. Enable [ARCore API](https://console.cloud.google.com/apis/library/arcore.googleapis.com) in Google Cloud.
-   2. [Create an API key](https://console.cloud.google.com/apis/credentials) (Credentials → Create credentials → API key).
-   3. Open `app/local.properties` and add (no quotes, no spaces around `=`):
+   1. [Create your own Google Cloud project](https://console.cloud.google.com/projectcreate) and select it.
+   2. Enable [ARCore API](https://console.cloud.google.com/apis/library/arcore.googleapis.com) in that project.
+   3. [Create an API key](https://console.cloud.google.com/apis/credentials) (Credentials → Create credentials → API key).
+   4. Open `app/local.properties` and add (no quotes, no spaces around `=`):
 
 ```properties
 ARCORE_API_KEY=paste_your_key_here
@@ -94,7 +112,9 @@ Details: [docs/architecture.md](docs/architecture.md) · phases: [docs/plan.md](
 
 ## Current status
 
-**Phase 1 (core) — done:** AR Map/Navigate (no 2D floor plan yet), waypoints + save/load, A* + connections, Cloud Anchors, path cues.
+**Prototype core complete:** AR Map/Navigate (no 2D floor plan yet), waypoints + save/load, A* + connections, Cloud Anchors, and path cues.
+
+This does **not** mean the product is finished. It still needs stronger localization, testing, security review, onboarding, accessibility work, and production UX.
 
 **Next:** Phase 2 — navigation platform. See [docs/plan.md](docs/plan.md).  
 **ISP:** better localization so users stop depending on constant rescans — [docs/future-plan.md](docs/future-plan.md).  

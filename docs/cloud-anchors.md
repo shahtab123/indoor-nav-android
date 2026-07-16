@@ -11,20 +11,22 @@ Official docs: [Authorization](https://developers.google.com/ar/develop/authoriz
 
 ## What you are doing
 
-1. Create an API key in Google Cloud (project `indoor-nav-502213`).
-2. Put that key in `app/local.properties`.
-3. Rebuild and install the app.
-4. Mark a spot with Wi‑Fi on — it should say saved to cloud (not “not authorized”).
+1. Create your own Google Cloud project.
+2. Enable the ARCore API in that project.
+3. Create an API key.
+4. Put that key in `app/local.properties`.
+5. Rebuild and install the app.
+6. Mark a spot with Wi‑Fi on — it should say saved to cloud (not “not authorized”).
 
 **Do not** use `client_secret….json` (Desktop OAuth). The Android app ignores it.
 
 ---
 
-## Project values (copy exactly)
+## Values you will use
 
 | Item | Value |
 |------|--------|
-| Google Cloud project | `indoor-nav-502213` |
+| Google Cloud project | Create your own (for example, `my-indoor-nav`) |
 | App package name | `com.google.ar.core.examples.kotlin.helloar` |
 | Where the key goes | `d:\indoor map\app\local.properties` |
 | Line to add | `ARCORE_API_KEY=your_key_here` |
@@ -32,29 +34,41 @@ Official docs: [Authorization](https://developers.google.com/ar/develop/authoriz
 
 Links:
 
-- [Enable ARCore API](https://console.cloud.google.com/apis/library/arcore.googleapis.com?project=indoor-nav-502213)
-- [Credentials](https://console.cloud.google.com/apis/credentials?project=indoor-nav-502213)
+- [Create a Google Cloud project](https://console.cloud.google.com/projectcreate)
+- [Enable ARCore API](https://console.cloud.google.com/apis/library/arcore.googleapis.com)
+- [Credentials](https://console.cloud.google.com/apis/credentials)
 
 ---
 
-## Step 1 — Enable ARCore API
+## Step 1 — Create your Google Cloud project
 
-1. Open [Enable ARCore API](https://console.cloud.google.com/apis/library/arcore.googleapis.com?project=indoor-nav-502213).
-2. Make sure project **indoor-nav-502213** is selected (top bar).
-3. If the button says **Enable**, click it. If it says **Manage**, it is already on.
-
----
-
-## Step 2 — Create an API key
-
-1. Open [Credentials](https://console.cloud.google.com/apis/credentials?project=indoor-nav-502213).
-2. Click **+ Create credentials**.
-3. Choose **API key** (not “OAuth client ID”).
-4. Copy the key string that appears.
+1. Open [Create a Google Cloud project](https://console.cloud.google.com/projectcreate).
+2. Enter any project name, such as **My Indoor Nav**.
+3. Choose your organization and billing account if Google asks for them.
+4. Click **Create** and wait for the project to finish provisioning.
+5. Select your new project from the project picker in the Google Cloud top bar.
 
 ---
 
-## Step 3 — Restrict the key (recommended)
+## Step 2 — Enable ARCore API
+
+1. With your new project selected, open [ARCore API](https://console.cloud.google.com/apis/library/arcore.googleapis.com).
+2. Confirm the project name shown in the Google Cloud top bar is **your project**.
+3. Click **Enable**. If the button says **Manage**, it is already enabled.
+
+---
+
+## Step 3 — Create an API key
+
+1. Open [Credentials](https://console.cloud.google.com/apis/credentials).
+2. Confirm your project is still selected in the top bar.
+3. Click **+ Create credentials**.
+4. Choose **API key** (not “OAuth client ID”).
+5. Copy the key string that appears.
+
+---
+
+## Step 4 — Restrict the key (recommended)
 
 1. Still on Credentials, click the key you just created (or **Edit API key**).
 2. Under **API restrictions**:
@@ -66,7 +80,7 @@ Links:
 
 ---
 
-## Step 4 — Put the key in the project
+## Step 5 — Put the key in the project
 
 1. Open this file in Cursor:
 
@@ -93,7 +107,7 @@ ARCORE_API_KEY=AIzaSy........................
 
 ---
 
-## Step 5 — Install the app on your phone
+## Step 6 — Install the app on your phone
 
 1. Phone plugged in, USB debugging on, Wi‑Fi on.
 2. In a terminal:
@@ -103,11 +117,11 @@ cd "d:\indoor map\app"
 .\gradlew.bat installDebug
 ```
 
-3. If the build fails complaining about `ARCORE_API_KEY`, Step 4 is wrong or the file is in the wrong place (`app\local.properties`, next to `settings.gradle` / project root of the Gradle app module parent — path above).
+3. If the build fails complaining about `ARCORE_API_KEY`, Step 5 is wrong or the file is in the wrong place (`app\local.properties`, next to `settings.gradle` / project root of the Gradle app module parent — path above).
 
 ---
 
-## Step 6 — Confirm hosting works
+## Step 7 — Confirm hosting works
 
 1. Open the app on the phone.
 2. Switch to **Map**.
@@ -162,17 +176,19 @@ A few apartment markers will not burn billable Cloud Anchor usage. Restrict the 
 
 Only when you want long TTL. Skip for now if the API key path works.
 
-1. [Credentials](https://console.cloud.google.com/apis/credentials?project=indoor-nav-502213) → **+ Create credentials** → **OAuth client ID**.
+1. Select your project, then open [Credentials](https://console.cloud.google.com/apis/credentials) → **+ Create credentials** → **OAuth client ID**.
 2. Application type: **Android**.
 3. Package name: `com.google.ar.core.examples.kotlin.helloar`
-4. SHA-1 (debug APK we use):
+4. Get the SHA-1 for your own debug signing key:
 
-```
-C0:BB:07:3B:84:F1:6A:CF:EE:6A:EF:79:7A:28:62:90:E7:C5:85:D0
+```powershell
+cd "d:\indoor map\app"
+.\gradlew.bat signingReport
 ```
 
-5. Wait a few minutes for Google to propagate.
-6. In code, raise `TTL_DAYS` in `GoogleCloudBackend.kt` from `1` to `365`, then rebuild.
+5. Copy the **SHA1** shown under the `debug` variant into Google Cloud.
+6. Wait a few minutes for Google to propagate.
+7. In code, raise `TTL_DAYS` in `GoogleCloudBackend.kt` from `1` to `365`, then rebuild.
 
 You do **not** paste any JSON into the app for this method.
 
