@@ -10,7 +10,17 @@ It provides reusable foundations—AR tracking, spatial markers, route graphs, p
 
 - **App module:** [`app/`](app/) (`com.google.ar.core.examples.kotlin.helloar`)
 - **Localization today:** Google Cloud Anchors (v1) — works, but limited (see below)
-- **Next localization:** Indoor Spatial Platform (ISP) — [docs/future-plan.md](docs/future-plan.md)
+- **Planned future update:** Indoor Spatial Platform (ISP) localization — [docs/future-plan.md](docs/future-plan.md)
+
+---
+
+## Prototype demo
+
+<a href="https://youtu.be/BHEExvv4fHo">
+  <img src="Yhumbnail.png" alt="Watch the Indoor Nav prototype demo" width="420">
+</a>
+
+[Watch on YouTube](https://youtu.be/BHEExvv4fHo)
 
 ---
 
@@ -37,7 +47,7 @@ This starter kit is experimental. Cloud Anchors are useful for prototyping, but 
 - Hosted anchors expire (~24h with an API key), so markers do not last
 - Mapping feels fragile — lighting, featureless walls, and quotas all hurt quality
 
-That is why the next major localization phase is **ISP** (Indoor Spatial Platform): a self-hosted indoor map / VPS-style backend behind the same `LocalizationBackend` plug-in, so **Indoor Nav** keeps the nav product and swaps out the weak cloud-anchor layer. Details: [docs/future-plan.md](docs/future-plan.md).
+In a future update, the project plans to add **ISP** (Indoor Spatial Platform) as a stronger localization backend behind the same `LocalizationBackend` plug-in. ISP is planned work and is **not included in the current starter kit**. Details: [docs/future-plan.md](docs/future-plan.md).
 
 ---
 
@@ -78,7 +88,7 @@ All project docs live in [`docs/`](docs/README.md).
 | Doc | What it’s for |
 |-----|----------------|
 | [docs/plan.md](docs/plan.md) | Indoor Nav product roadmap |
-| [docs/future-plan.md](docs/future-plan.md) | ISP / IndoorVPS track |
+| [docs/future-plan.md](docs/future-plan.md) | Planned future ISP localization |
 | [docs/architecture.md](docs/architecture.md) | Localization plug-in |
 | [docs/cloud-anchors.md](docs/cloud-anchors.md) | API key & quotas |
 | [docs/setup.md](docs/setup.md) | Phone setup & install |
@@ -116,8 +126,10 @@ Details: [docs/architecture.md](docs/architecture.md) · phases: [docs/plan.md](
 
 This does **not** mean the product is finished. It still needs stronger localization, testing, security review, onboarding, accessibility work, and production UX.
 
-**Next:** Phase 2 — navigation platform. See [docs/plan.md](docs/plan.md).  
-**ISP:** better localization so users stop depending on constant rescans — [docs/future-plan.md](docs/future-plan.md).  
+**Next:** Phase 2 — navigation platform. See [docs/plan.md](docs/plan.md).
+
+**Planned future update:** ISP localization to reduce dependence on constant rescanning — [docs/future-plan.md](docs/future-plan.md).
+
 **Not building in this repo:** CAD editor, OpenVPS/RTAB/ORB-SLAM.
 
 ---
